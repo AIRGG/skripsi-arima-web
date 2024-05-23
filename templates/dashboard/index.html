@@ -1,0 +1,142 @@
+{% extends "dashboard/base.html" %} 
+{% block title %}Dashboard{% endblock %} 
+{% block head %} {{ super() }} {% endblock %} 
+
+{# {% block toolbar %} 
+{{ super() }}
+<div class="btn-toolbar mb-2 mb-md-0">
+  
+</div>
+{% endblock %}  #}
+
+{% block content %}
+
+<div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Device Information</h4>
+    </div>
+    <div class="card-body">
+      {# <h5 class="card-title">Device Details</h5> #}
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Device ID</th>
+            <td>1ee01383af6c0308c68d371b81349fd</td>
+          </tr>
+          <tr>
+            <th scope="row">Device Name</th>
+            <td>M2M-COLO_WS3</td>
+          </tr>
+          <tr>
+            <th scope="row">Customer ID</th>
+            <td>1ee40c31261be208c68d371b81349fd</td>
+          </tr>
+          <tr>
+            <th scope="row">Customer Name</th>
+            <td>PT A</td>
+          </tr>
+          <tr>
+            <th scope="row">Sensor Key</th>
+            <td>usage1 & usage2</td>
+          </tr>
+          <tr>
+            <th scope="row">Sensor Name</th>
+            <td>Volume Usage</td>
+          </tr>
+        </tbody>
+      </table>
+      {# <h5 class="card-title">Graph</h5> #}
+      <hr>
+      <div class="row justify-content-between">
+        <div class="col-2">
+          <button
+            type="button"
+            class="btn btn-sm btn-secondary"
+            onclick="buildChart(this)"
+          >
+          Build Chart
+          </button>
+        </div>
+        <div class="col-2 text-end">
+          <button
+            type="button"
+            class="btn btn-sm btn-secondary"
+            onclick="downloadPng()"
+          >
+          Download Chart
+          </button>
+        </div>
+      </div>
+      <canvas class="my-4 w-100" id="myChart" width="900" height="300"></canvas>
+      {# <h5 class="card-title">Details</h5> #}
+      <div id="tableDetail" style="display: none;">
+      <div class="row justify-content-end">
+        <div class="col-2 text-end" >
+          <button
+            type="button"
+            class="btn btn-sm btn-secondary"
+            onclick="downloadCsv('tableMonth')"
+          >
+          Download CSV
+          </button>
+        </div>
+      </div>
+      <table class="table table-striped table-sm" id="tableMonth">
+        <thead>
+          <th class="fw-bold"></th>
+          <th class="fw-bold">Usage1 (Bytes)</th>
+          <th class="fw-bold">Usage2 (Bytes)</th>
+          <th class="fw-bold">Usage1 (MB)</th>
+          <th class="fw-bold">Usage2 (MB)</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-bold"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+      <h5 class="fw-bold">Detail</h5>
+      <div class="row justify-content-end">
+        <div class="col-2 text-end" >
+          <button
+            type="button"
+            class="btn btn-sm btn-secondary"
+            onclick="downloadCsv('tableDay')"
+          >
+          Download CSV
+          </button>
+        </div>
+      </div>
+      <table class="table table-striped table-sm" id="tableDay">
+        <thead>
+          <th class="fw-bold"></th>
+          <th class="fw-bold">Usage1 (Bytes)</th>
+          <th class="fw-bold">Usage2 (Bytes)</th>
+          <th class="fw-bold">Usage1 (MB)</th>
+          <th class="fw-bold">Usage2 (MB)</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-bold"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+<div class="table-responsive small">
+  
+</div>
+
+{% endblock %}
