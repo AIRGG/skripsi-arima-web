@@ -6,17 +6,21 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, Asyn
 from sqlalchemy import create_engine, text, MetaData
 from sqlalchemy.orm import sessionmaker
 
+from dotenv import load_dotenv
+load_dotenv()
+
 import os
 
 import pandas as pd
 
 class Connection:
     def __init__(self):
-        username = 'postgres'
-        password = 'admin123'
-        endpoint = 'localhost'
-        database_iot = 'dbiot'
-        database_iot_helper = 'dbiot_helper'
+        os.getenv('development', '1')
+        username = os.getenv('db_username', '')
+        password = os.getenv('db_password', '')
+        endpoint = os.getenv('db_endpoint', '')
+        database_iot = os.getenv('db_iot', '')
+        database_iot_helper = os.getenv('db_iot_helper', '')
 
         self.url_db1 = f"postgresql+asyncpg://{username}:{password}@{endpoint}/{database_iot}"
         self.url_db2 = (

@@ -30,7 +30,7 @@ class request_predict(BaseModel):
     start_date: str = '2023-12-16'
     end_date: str = '2023-12-31'
 
-    device_id: str = '1ee01383af6c0308c68d371b81349fd'
+    device_id: str = '3af6c030-0138-11ee-8c68-d371b81349fd'
     sensor_key: str = 'usage1'
 
 class response_predict(BaseModel):
@@ -67,7 +67,7 @@ async def process_predict(
     start_date_str_test: str = payload.start_date
     end_date_str_test: str = payload.end_date
 
-    device_id = payload.device_id
+    device_id = await convert_uuid(payload.device_id)
     sensor_key = payload.sensor_key
 
     model_pk_path = os.path.join(os.getcwd(), 'arima_models', f"arima_{device_id}_{sensor_key}_{start_date_str_train}_{end_date_str_train}.pkl")
@@ -129,13 +129,13 @@ async def process_predict(
     print(res, 'res')
     return res
 
-@routes_arima.post("/arima/get-data")
-async def process_get_data(
-    request: Request,
-    response: Response
-):
-    http: httpx = request.state.httpx
+# @routes_arima.post("/arima/get-data")
+# async def process_get_data(
+#     request: Request,
+#     response: Response
+# ):
+#     http: httpx = request.state.httpx
 
-    form = await request.form()
-    print(form)
-    return []
+#     form = await request.form()
+#     print(form)
+#     return []

@@ -23,7 +23,7 @@ class ArimaModule():
         ts_end_date = datetime.datetime.strptime(f'{end_date} 23:59:59.999999', '%Y-%m-%d %H:%M:%S.%f').replace(tzinfo=pytz.utc).astimezone(timezone).timestamp()  * 1e3
 
         sql_device = text("SELECT * FROM device")
-        print(sql_device, ts_start_date, ts_end_date)
+        print(sql_device, device_id, ts_start_date, ts_end_date)
         df_device = await conn.df_conniot(sql_device)
         df_device = df_device.rename(columns={'id': 'id_device'})
         sql_customer = text("SELECT * FROM customer")

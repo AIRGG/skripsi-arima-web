@@ -256,7 +256,7 @@ const getData = async () => {
 
       "start_date": "2023-12-16",
       "end_date": "2024-02-29",
-      "device_id": "1ee01383af6c0308c68d371b81349fd",
+      "device_id": "3af6c030-0138-11ee-8c68-d371b81349fd",
       "sensor_key": "usage1"
     })
   }).then(response => {
@@ -281,7 +281,7 @@ const getData = async () => {
 
       "start_date": "2023-12-16",
       "end_date": "2024-02-29",
-      "device_id": "1ee01383af6c0308c68d371b81349fd",
+      "device_id": "3af6c030-0138-11ee-8c68-d371b81349fd",
       "sensor_key": "usage2"
     })
   }).then(response => {
